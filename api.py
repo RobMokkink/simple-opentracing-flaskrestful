@@ -5,14 +5,21 @@ from flask_opentracing import FlaskTracer
 import opentracing
 import requests
 
+from config import JAEGER_HOST
+
 
 # Constants
 todos = {}
 
+
 def init_tracer(service):
   config = Config(
       config={
-          'sampler': {'type': 'const', 'param': 1}
+          'sampler': {'type': 'const', 'param': 1},
+          'local_agent': {
+               'reporting_host': JAEGER_HOST,
+           },
+          'logging': True,
       },
       service_name=service)
   return config.initialize_tracer()
