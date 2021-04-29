@@ -30,7 +30,7 @@ class TodoSimple(Resource):
             return {todo_id: todos[todo_id]}
 
     def put(self, todo_id):
-        with tracer.start_span('get-todo', child_of=parent_span) as span:
+        with tracer.start_span('put-todo', child_of=parent_span) as span:
             span.set_tag("put_todo",todo_id) 
             todos[todo_id] = request.form['data']
             span.set_tag("put_todo_data",request.form['data']) 
