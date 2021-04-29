@@ -56,7 +56,7 @@ if __name__ == '__main__':
     # Add default route to HelloWorld
     api.add_resource(HelloWorld, '/')
 
-    # Add route /get to GetName
+    # Add route /todo to TodoSimple
     api.add_resource(TodoSimple, '/todo/<string:todo_id>')
 
     # Start the flask app
